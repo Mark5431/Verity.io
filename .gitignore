@@ -1,0 +1,44 @@
+# ===== Repo-level ignores for Verity_io =====
+
+# ---- Docs archive (requested) ----
+docs/
+
+# ---- Python backend ----
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.ruff_cache/
+backend/.coverage
+backend/htmlcov/
+backend/**/*.pyc
+backend/**/__pycache__/
+
+# Env/secrets
+backend/.env
+backend/.env.*
+
+# ---- Android / Gradle frontend ----
+frontend/.gradle/
+frontend/.idea/
+frontend/local.properties
+frontend/**/build/
+frontend/**/.cxx/
+frontend/**/*.iml
+
+# Kotlin / Java artifacts
+frontend/**/*.class
+frontend/captures/
+
+# ---- General IDE / OS ----
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# ---- Logs / temp ----
+*.log
+*.tmp
+*.swp
