@@ -1,14 +1,13 @@
-# Verity_io
+![Verity_io](resources/verityio_logo.svg)
 
 Unified workspace for the demo system:
-- `frontend/` — Android Jetpack Compose app (mock-first UX flow)
+- `frontend/` — Android Jetpack Compose app 
 - `backend/` — FastAPI fraud-decision service
 
 ## Repository Structure
 
 - `frontend/` Android app project (open this folder directly in Android Studio)
 - `backend/` Python API service
-- `docs/archive/` Archived markdown docs moved from frontend root
 
 ## Quick Start (Windows)
 
