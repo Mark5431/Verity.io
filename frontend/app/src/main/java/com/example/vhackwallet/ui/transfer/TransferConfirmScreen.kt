@@ -71,6 +71,18 @@ fun TransferConfirmScreen(
     var showPinAuth by remember { mutableStateOf(false) }
     var showTransferAnimation by remember { mutableStateOf(false) }
     var hasNotifiedHold by remember { mutableStateOf(false) }
+    var holdReasons by remember {
+        mutableStateOf(
+            listOf(
+                "First time sending to this recipient",
+                "Higher amount than usual",
+                "This device isn't recognized"
+            )
+        )
+    }
+    var holdExplanation by remember {
+        mutableStateOf("We can’t confirm intent—this pattern can be risky, so we paused it to keep you safe.")
+    }
     val context = LocalContext.current
     
     val currentDate = SimpleDateFormat("dd MMM yyyy, hh:mm a", Locale.getDefault()).format(Date())
@@ -85,6 +97,16 @@ fun TransferConfirmScreen(
             )
             hasNotifiedHold = true
         }
+    }
+
+    LaunchedEffect(name, amount, isNewRecipient) {
+        val decision = HoldDecisionClient.resolveHoldDecision(
+            recipientName = name,
+            amountText = amount,
+            isNewRecipient = isNewRecipient
+        )
+        holdReasons = decision.reasons
+        holdExplanation = decision.explanation
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -301,13 +323,7 @@ fun TransferConfirmScreen(
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         
-                        val reasons = listOf(
-                            "First time sending to this recipient",
-                            "Higher amount than usual",
-                            "This device isn't recognized"
-                        )
-                        
-                        reasons.forEach { reason ->
+                        holdReasons.forEach { reason ->
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.padding(vertical = 2.dp)
@@ -329,7 +345,7 @@ fun TransferConfirmScreen(
                         
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            text = "We can’t confirm intent—this pattern can be risky, so we paused it to keep you safe.",
+                            text = holdExplanation,
                             fontSize = 13.sp,
                             lineHeight = 14.sp,
                             color = VerityBlue.copy(alpha = 0.9f),

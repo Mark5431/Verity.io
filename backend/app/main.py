@@ -1,4 +1,4 @@
-"""Application entrypoint for the fraud decision FastAPI service."""
+"""Application entrypoint for the Verity.io risk decision FastAPI service."""
 
 import logging
 from contextlib import asynccontextmanager
@@ -23,7 +23,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="Fraud decision API with stable request and response contracts.",
+    description="Verity.io ML-powered risk decision API with stable request and response contracts.",
     lifespan=lifespan,
 )
 

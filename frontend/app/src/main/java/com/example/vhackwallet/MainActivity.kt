@@ -91,7 +91,7 @@ class MainActivity : ComponentActivity() {
                         ScannerScreen(
                             onBack = { navController.popBackStack() },
                             onScanSuccess = { result ->
-                                val simulatedName = "Wong Kah Lok"
+                                val simulatedName = "MAJU JAYA ENTERPRISE"
                                 val nextRoute = Screen.TransferAmount.createRoute(simulatedName, result)
                                 navController.navigate(Screen.Loading.createRoute(nextRoute))
                             }

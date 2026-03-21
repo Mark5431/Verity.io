@@ -285,7 +285,7 @@ fun TransferSearchScreen(
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp)
                                 .clickable { 
-                                    selectedContact = "Wong Kah Lok" to searchQuery.text
+                                    selectedContact = "MAJU JAYA ENTERPRISE" to searchQuery.text
                                     isNewRecipient = true  // Mark as unknown recipient to trigger animation
                                     isSearching = true 
                         },
